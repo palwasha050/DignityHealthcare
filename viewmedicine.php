@@ -40,7 +40,7 @@ if(isset($_GET[delid]))
             {
               echo "<tr>
               <td>&nbsp;$rs[medicinename]</td>
-              <td>&nbsp;₱ $rs[medicinecost]</td>
+              <td>&nbsp;pkr $rs[medicinecost]</td>
               <td>&nbsp;$rs[description]</td>
               <td>&nbsp;$rs[status]</td>
               <td>&nbsp;

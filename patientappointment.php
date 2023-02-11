@@ -1,5 +1,27 @@
 <?php
 
+function getTimeSlot($interval, $start_time, $end_time)
+{
+    $start = new DateTime($start_time);
+    $end = new DateTime($end_time);
+    $startTime = $start->format('H:i');
+    $endTime = $end->format('H:i');
+    $i=0;
+    $time = [];
+    while(strtotime($startTime) <= strtotime($endTime)){
+        $start = $startTime;
+        $end = date('H:i',strtotime('+'.$interval.' minutes',strtotime($startTime)));
+        $startTime = date('H:i',strtotime('+'.$interval.' minutes',strtotime($startTime)));
+        $i++;
+        if(strtotime($startTime) <= strtotime($endTime)){
+            $time[$i]['slot_start_time'] = $start;
+            $time[$i]['slot_end_time'] = $end;
+        }
+    }
+    return $time;
+}
+
+
 include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
@@ -137,34 +159,8 @@ if(isset($_SESSION[patientid]))
                                 <form method="post" action="" name="frmpatapp" onSubmit="return validateform()"
                                     class="appointment-form">
                                     <ul class="row">
-                                        <li class="col-sm-6">
-                                            <label>
-
-
-                                                <input placeholder="Patient Name" type="text" class="form-control"
-                                                    name="patiente" id="patiente"
-                                                    value="<?php echo $rspatient[patientname];  ?>"
-                                                    <?php echo $readonly; ?>>
-                                                <i class="icon-user"></i>
-                                            </label>
-
-                                        </li>
-
-                                        <li class="col-sm-6">
-                                            <label><input placeholder="Address" type="text" class="form-control"
-                                                    name="textarea" id="textarea"
-                                                    value="<?php echo $rspatient[address];  ?>"
-                                                    <?php echo $readonly; ?>><i class="icon-compass"></i>
-                                            </label>
-
-                                        </li>
-                                        <li class="col-sm-6">
-                                            <label><input placeholder="City" type="text" class="form-control"
-                                                    name="city" id="city" value="<?php echo $rspatient[city];  ?>"
-                                                    <?php echo $readonly; ?>><i class="icon-pin"></i>
-                                            </label>
-
-                                        </li>
+                                        
+                                        
                                         <li class="col-sm-6">
                                             <label>
                                                 <input placeholder="Mobile Number" type="text" class="form-control"
@@ -174,6 +170,8 @@ if(isset($_SESSION[patientid]))
                                             </label>
 
                                         </li>
+
+                                        
                                         <?php
                             if(!isset($_SESSION[patientid]))
                             {        
@@ -200,6 +198,7 @@ if(isset($_SESSION[patientid]))
                                         <?php
                             }
                             ?>
+
                                         <li class="col-sm-6">
                                             <label>
 
@@ -228,15 +227,7 @@ if(isset($_SESSION[patientid]))
                                             </label>
 
                                         </li>
-                                        <li class="col-sm-6">
-                                            <label>
-                                                <input placeholder="Date of birth" type="text" class="form-control"
-                                                    name="dob" id="dob" onfocus="(this.type='date')"
-                                                    value="<?php echo $rspatient[dob]; ?>" <?php echo $readonly; ?>><i
-                                                    class="ion-calendar"></i>
-                                            </label>
-
-                                        </li>
+                                        
                                         <li class="col-sm-6">
                                             <label>
                                                 <input placeholder="Appointment date" type="text" class="form-control"
@@ -246,6 +237,7 @@ if(isset($_SESSION[patientid]))
                                             </label>
 
                                         </li>
+
                                         <li class="col-sm-6">
                                             <label>
                                                 <input placeholder="Appointment time" type="text"
@@ -255,6 +247,7 @@ if(isset($_SESSION[patientid]))
                                             </label>
 
                                         </li>
+                                        
                                         <li class="col-sm-6">
                                             <label>
 

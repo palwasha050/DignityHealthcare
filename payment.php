@@ -2,6 +2,8 @@
 session_start();
 include("header.php");
 include("dbconnection.php");
+require('config.php');
+
 if(isset($_POST[submit]))
 {
 		$sql ="INSERT INTO payment(patientid,appointmentid,paiddate,paidtime,paidamount,status) values('$_GET[patientid]','$_GET[appointmentid]','$_POST[date]','$_POST[time]','$_POST[paidamount]','Active')";
@@ -85,6 +87,22 @@ include("viewpaymentreport.php");
 <div class="clear"></div>
   </div>
 </div>
+
+<form action="submit.php" method="post">
+	<script
+		src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-key="<?php echo $publishableKey?>"
+		data-amount="100000"
+		data-name="Payment method"
+		data-description="Pay through stripe"
+		data-image="https://www.logostack.com/wp-content/uploads/designers/eclipse42/small-panda-01-600x420.jpg"
+		data-currency="pkr"
+		
+	>
+	</script>
+
+</form>
+
 <?php
 include("footer.php");
 ?>

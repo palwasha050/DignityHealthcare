@@ -112,7 +112,7 @@ if(isset($_GET[editid]))
 		$qsqlmedicine = mysqli_query($con,$sqlmedicine);
 		while($rsmedicine = mysqli_fetch_array($qsqlmedicine))
 		{
-			echo "<option value='$rsmedicine[medicineid]'>$rsmedicine[medicinename] ( ₱ $rsmedicine[medicinecost] )</option>";
+			echo "<option value='$rsmedicine[medicineid]'>$rsmedicine[medicinename] ( pkr $rsmedicine[medicinecost] )</option>";
 		}
 		?>
 		  </select>
@@ -191,7 +191,7 @@ if(isset($_GET[editid]))
 		    <td>&nbsp;$rs[dosage]</td>
           <td>&nbsp;₹$rs[cost]</td>
 		   <td>&nbsp;$rs[unit]</td>
-		   <td  align='right'>₱" . $rs[cost] * $rs[unit] . "</td>";
+		   <td  align='right'>pkr" . $rs[cost] * $rs[unit] . "</td>";
 			if(!isset($_SESSION[patientid]))
 			{
 			 echo " <td>&nbsp; <a href='prescriptionrecord.php?delid=$rs[prescription_record_id]&prescriptionid=$_GET[prescriptionid]'>Delete</a> </td>"; 
@@ -202,7 +202,7 @@ if(isset($_GET[editid]))
 		?>
         <tr>
           <th colspan="4" align="right">Grand Total </th>
-		  <th align="right">₱ <?php echo $gtotal; ?></th>
+		  <th align="right">pkr <?php echo $gtotal; ?></th>
 		  <td></td>
           </tr>
         <tr>

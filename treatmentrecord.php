@@ -93,11 +93,11 @@ $rspatient=mysqli_fetch_array($qsqlpatient);
 			{
 				if($rstreatment[treatmentid] == $rsedit[treatmentid])
 				{
-				echo "<option value='$rstreatment[treatmentid]' selected>$rstreatment[treatmenttype]  - (₱ $rstreatment[treatment_cost])</option>";
+				echo "<option value='$rstreatment[treatmentid]' selected>$rstreatment[treatmenttype]  - (pkr $rstreatment[treatment_cost])</option>";
 				}
 				else
 				{
-					echo "<option value='$rstreatment[treatmentid]'>$rstreatment[treatmenttype]  - (₱ $rstreatment[treatment_cost])</option>";
+					echo "<option value='$rstreatment[treatmentid]'>$rstreatment[treatmenttype]  - (pkr $rstreatment[treatment_cost])</option>";
 				}
 				
 			}

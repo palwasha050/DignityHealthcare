@@ -112,7 +112,7 @@ if($rs[bill_type]  == "Prescription charge")
 	echo 	" - " . $rstreatment2[treatmenttype];
 } 
 
-	echo " </td><td>&nbsp;₱ $rs[bill_amount]</td></tr>";
+	echo " </td><td>&nbsp;pkr $rs[bill_amount]</td></tr>";
 		$billamt = $billamt +  $rs[bill_amount];
 		}
 		?>
@@ -123,22 +123,22 @@ if($rs[bill_type]  == "Prescription charge")
       <tbody>
         <tr>
           <th scope="col"><div align="right">Bill Amount &nbsp; </div></th>
-          <td>&nbsp;₱ <?php echo $billamt; ?></td>
+          <td>&nbsp;pkr <?php echo $billamt; ?></td>
         </tr>
         <tr>
           <th width="442" scope="col"><div align="right">Tax Amount (5%) &nbsp; </div></th>
-          	<td width="95">&nbsp;₱ <?php echo $taxamt = 5 * ($billamt / 100); ?>
+          	<td width="95">&nbsp; pkr <?php echo $taxamt = 5 * ($billamt / 100); ?>
             </td>
         </tr>
          
 		<tr>
 		  <th scope="col"><div align="right">Discount &nbsp; </div></th>
-		  <td>&nbsp;₱ <?php echo $rsbilling_records[discount]; ?></td>
+		  <td>&nbsp; pkr <?php echo $rsbilling_records[discount]; ?></td>
 	    </tr>
         
 		<tr>
 		  <th scope="col"><div align="right">Grand Total &nbsp; </div></th>
-		  <td>&nbsp;₱ <?php echo ($billamt + $taxamt)  - $rsbilling_records[discount] ; ?></td>
+		  <td>&nbsp; pkr <?php echo ($billamt + $taxamt)  - $rsbilling_records[discount] ; ?></td>
 	    </tr>
       </tbody>
     </table>

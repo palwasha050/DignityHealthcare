@@ -39,14 +39,23 @@ if(isset($_SESSION[doctorid]))
 			<td>
 			<div align="left"><a href="prescription.php?patientid=<?php echo $_GET[patientid]; ?>&appid=<?php echo $rsappointment[appointmentid]; ?>">Add Prescription records</a></div>
 			<hr/>
+                   
+			<h3>Convert Prescription</h3>
 			<form action="upload.php" method="POST" enctype="multipart/form-data">
 				<input type="file" name="image" />
 				<input type="submit"/ value="Convert">
+			</form>
+            
+            <h3>Read Laboratory Report</h3>
+			<form action="upload2.php" method="POST" enctype="multipart/form-data">
+				<input type="submit" name="Upload"
+						class="button" value="Upload" />
 			</form>
 
 			</td>
 		</tr>
 	</table>
+
 <?php
 }
 ?>

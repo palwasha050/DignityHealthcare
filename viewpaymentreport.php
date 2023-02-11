@@ -46,30 +46,30 @@ $rsbilling_records = mysqli_fetch_array($qsqlbilling_records);
 			$billamt = $billamt +  $rs[bill_amount];
 		}
 ?>
-  &nbsp;₱ <?php echo $billamt; ?></td>
+  &nbsp;pkr <?php echo $billamt; ?></td>
         </tr>
         <tr>
           <th width="442" scope="col"><div align="right"></div></th>
           <td width="413">&nbsp;</td>
           <th width="442" scope="col"><div align="right">Tax Amount (5%) &nbsp; </div></th>
-          <td width="413">&nbsp;₱ <?php echo $taxamt = 5 * ($billamt / 100); ?></td>
+          <td width="413">&nbsp;pkr <?php echo $taxamt = 5 * ($billamt / 100); ?></td>
        	</tr>
          
 		<tr>
 		  <th scope="col"><div align="right">Disount reason</div></th>
 		  <td rowspan="4" valign="top"><?php echo $rsbilling_records[discountreason]; ?></td>
 		  <th scope="col"><div align="right">Discount &nbsp; </div></th>
-		  <td>&nbsp;₱ <?php echo $rsbilling_records[discount]; ?></td>
+		  <td>&nbsp;pkr <?php echo $rsbilling_records[discount]; ?></td>
 	    </tr>
         
 		<tr>
 		  <th rowspan="3" scope="col">&nbsp;</th>
 		  <th scope="col"><div align="right">Grand Total &nbsp; </div></th>
-		  <td>&nbsp;₱ <?php echo $grandtotal = ($billamt + $taxamt)  - $rsbilling_records[discount] ; ?></td>
+		  <td>&nbsp;pkr <?php echo $grandtotal = ($billamt + $taxamt)  - $rsbilling_records[discount] ; ?></td>
 	    </tr>
 		<tr>
 		  <th scope="col"><div align="right">Paid Amount </div></th>
-		  <td>₱ <?php
+		  <td>pkr <?php
 		  	$sqlpayment ="SELECT sum(paidamount) FROM payment where appointmentid='$billappointmentid'";
 			$qsqlpayment = mysqli_query($con,$sqlpayment);
 			$rspayment = mysqli_fetch_array($qsqlpayment);
@@ -78,7 +78,7 @@ $rsbilling_records = mysqli_fetch_array($qsqlbilling_records);
 	    </tr>
 		<tr>
 		  <th scope="col"><div align="right">Balance Amount</div></th>
-		  <td>₱ <?php echo $balanceamt = $grandtotal - $rspayment[0]  ; ?></td>
+		  <td>pkr <?php echo $balanceamt = $grandtotal - $rspayment[0]  ; ?></td>
 	    </tr>
       </tbody>
     </table>
@@ -107,7 +107,7 @@ else
 			   <tr>
 				 <td>&nbsp;<?php echo $rspayment[paiddate]; ?></td>
 				 <td>&nbsp;<?php echo $rspayment[paidtime]; ?></td>
-				 <td>&nbsp;₱ <?php echo $rspayment[paidamount]; ?></td>
+				 <td>&nbsp;pkr <?php echo $rspayment[paidamount]; ?></td>
 			   </tr>
 		<?php
 		}

@@ -1,5 +1,8 @@
 
   <?php include 'header.php';?>
+
+
+
   <!-- Bnr Header -->
   <section class="main-banner">
     <div class="tp-banner-container">
@@ -167,5 +170,28 @@
     </div>
   </section>
   
+
+
   <!-- Footer -->
 <?php include 'footer.php';?>
+
+
+<?php
+
+require 'vendor/autoload.php';
+
+$client = new GuzzleHttp\Client();
+
+$response = $client->request('GET', 'https://app.impira.com:443/o/student.uet.edu.pk-7cbbad74/api/v2/collection/First', [
+    'headers' => [
+        'Authorization' => 'o2wNcGo2PaS4bCJRtxyT0M24~PhLkan6Iea3tl48Cvd6XIVSvFMGT57FuHfi4zem4',
+    ],
+]);
+
+if ($response->getStatusCode() == 200) {
+    // Token is valid
+    echo $response->getBody();
+} else {
+    // Token is invalid
+    echo "Error: Invalid API token";
+}

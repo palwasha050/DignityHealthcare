@@ -99,7 +99,7 @@
                     <div class="col-md-7">
                       <h5>Our Best Services <span>For Disabled</span> Persons </h5>
                       <p>
-Medical services are s provided by medical professionals to diagnose, treat, or prevent illnesses and injuries. This includes services such as primary care, specialty care, mental health care, hospital care, and emergency care. Medical services can also include preventive care such as vaccinations, screenings, and health education.</p>
+We provide medical professionals who specialize in providing care to people with disabilities. They provide comprehensive care that includes diagnosis, treatment, and management of a patient’s condition. We also provide physical, occupational, and speech therapy, as well as psychological and social services. </p>
                       <!-- List Style Check -->
                       <ul class="list-style-check">
                         <li> Qualified Staff of Doctors </li>

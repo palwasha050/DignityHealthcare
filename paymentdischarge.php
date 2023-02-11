@@ -2,6 +2,8 @@
 
 include("adheader.php");
 include("dbconnection.php");
+require('config.php');
+
 if(isset($_POST["submitfullamount"]))
 {
   $sql ="INSERT INTO payment(patientid,appointmentid,paiddate,paidtime,paidamount,status) values('$_GET[patientid]','$_GET[appointmentid]','$dt','$tim','$_POST[paidamount]','Active')";
@@ -32,7 +34,20 @@ $billappointmentid = $_GET[appointmentid];
 <div class="container-fluid">
   <div class="block-header">
     <h2>Make Payment</h2>
+    <form action="submit.php" method="post">
+	<script
+		src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-key="<?php echo $publishableKey?>"
+		data-amount="100000"
+		data-name="Payment method"
+		data-description="Pay through stripe"
+		data-image="https://www.logostack.com/wp-content/uploads/designers/eclipse42/small-panda-01-600x420.jpg"
+		data-currency="pkr"
+		
+	>
+	</script>
 
+</form>
   </div>
 
   <div class="card" style="padding: 10px">

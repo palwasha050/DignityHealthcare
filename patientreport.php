@@ -197,9 +197,29 @@ jQuery(document).ready(function($) {
 	<div class="toggle-content">
 		<p><?php
         $billappointmentid= $rsappointment[0]; 
-		include("viewbilling.php"); ?>
+		include("viewbilling.php"); 
+		require('config.php');
+		?>
+		
         </p>
-	</div><!-- .toggle-content (end) -->
+
+		<form action="submit.php" method="post">
+	<script
+		src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-key="<?php echo $publishableKey?>"
+		data-amount=<?php echo (($billamt + $taxamt)  - $rsbilling_records[discount] ) * 100 ; ?>
+		data-name="Payment method"
+		data-description="Pay through stripe"
+		data-image="a.png"
+		data-currency="pkr"
+		
+	>
+	</script>
+
+</form>
+	</div>
+	
+	<!-- .toggle-content (end) -->
 </div><!-- .toggle (end) -->
 
 

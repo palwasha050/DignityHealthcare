@@ -21,6 +21,7 @@ if(isset($_GET[delid]))
 <div class="wrapper col4">
   <div id="container">
     <h1>View prescription record</h1>
+   
 <?php
 $sql ="SELECT * FROM prescription";
 $qsql = mysqli_query($con,$sql);
